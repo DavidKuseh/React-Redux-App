@@ -1,15 +1,16 @@
 import * as types from './actionTypes';
 
-const initialValueCount = 0;
-export function countReducer(count = initialValueCount, action) {
+const initialList = {
+  pokemon: [],
+};
+export function pokemonReducer(state = initialList, action) {
   switch (action.type) {
-    case types.INCREMENT:
-      return count + 1;
-    case types.DECREMENT:
-      return count - 1;
-    case types.RESET:
-      return 0;
+    case types.FETCH_POKEMON:
+      return {
+        ...state,
+        pokemon: action.payload
+      };
     default:
-      return count;
+      return state;
   }
 }
